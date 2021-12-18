@@ -76,6 +76,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func decimalButtonClicked(_ sender: Any) {
+        if !((resultLabel.text)?.contains("."))! {
+            resultLabel.text! += "."
+        }
     }
     
     
