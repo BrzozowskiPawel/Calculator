@@ -15,6 +15,14 @@ class CalculatorManager {
     var lastOperation = 0.0
     var currentNumber = 0.0
     
+    // Reset variables to start values
+    func clear() {
+        calculationArray = []
+        lastNumber = 0.0
+        lastOperation = 0.0
+        currentNumber = 0.0
+    }
+    
     func calaculateValue(operation: String) -> String? {
         if operation == "operation" {
             print("CALCUALTING!")

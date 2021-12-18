@@ -65,6 +65,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func equalsButtonClicked(_ sender: Any) {
+        
+        // Clear label if there is only 1 item in array.
+        if calculatorManager.calculationArray.count ==  1 {
+            clearClicked(sender)
+        }
+        
         isValidPress = true
         
         calculatorManager.lastNumber = calculatorManager.currentNumber
@@ -81,6 +87,13 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func clearClicked(_ sender: Any) {
+        // Reseting declared values
+        clearDisplay = false
+        isValidPress = false
+        calculatorManager.clear()
+        resultLabel.text = ""
+    }
     
 }
 
