@@ -47,9 +47,9 @@ class ViewController: UIViewController {
         
         
         
-        if let reasult = calculatorManager.calaculateValue(operation: "operation") {
-            resultLabel.text = reasult
-            print(reasult)
+        if let result = calculatorManager.calaculateValue(operation: "operation") {
+            resultLabel.text = getResultAsString(result: result)
+            print(result)
         }
         
         print(calculatorManager.calculationArray)
@@ -58,15 +58,29 @@ class ViewController: UIViewController {
         isValidPress = false
     }
     
+    func getResultAsString(result: Double?) -> String{
+        if let result = result {
+            if result.rounded(.up) == result.rounded(.down){
+                //number is integer
+                return String(Int(result))
+            }else{
+                //number is not integer
+                return String(result)
+            }
+        } else {
+            return ""
+        }
+    }
+    
     @IBAction func equalsButtonClicked(_ sender: Any) {
         
         isValidPress = true
         
         calculatorManager.lastNumber = calculatorManager.currentNumber
         
-        if let reasult = calculatorManager.calaculateValue(operation: "equals") {
-            resultLabel.text = reasult
-            print(reasult)
+        if let result = calculatorManager.calaculateValue(operation: "equals") {
+            resultLabel.text = getResultAsString(result: result)
+            print(result)
         }
     }
     

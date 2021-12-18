@@ -23,7 +23,7 @@ class CalculatorManager {
         currentNumber = 0.0
     }
     
-    func calaculateValue(operation: String) -> String? {
+    func calaculateValue(operation: String) -> Double? {
         if operation == "operation" {
             print("CALCUALTING!")
             // If size isn't > 3 we cannot perform operation coz there is only 1 number
@@ -33,7 +33,8 @@ class CalculatorManager {
                 calculationArray.removeAll()
                 calculationArray.append(newValue)
                 calculationArray.append(lastOperation)
-                return String(calculationArray[0])
+//                return String(calculationArray[0])
+                return calculationArray[0]
             }
         } else if operation == "equals" {
             if calculationArray.count >= 1 {
@@ -43,7 +44,8 @@ class CalculatorManager {
                 calculationArray.append(newValue)
                 // Last operation wont be appended becsue user click on the equals button
 //                calculationArray.append(lastOperation)
-                return String(calculationArray[0])
+//                return String(calculationArray[0])
+                return calculationArray[0]
             }
         }
         
