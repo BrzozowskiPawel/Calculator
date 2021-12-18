@@ -26,9 +26,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func operationButtonOrangeClicked(_ sender: Any) {
+        print("Operator clicked")
     }
     
     @IBAction func equalsButtonClicked(_ sender: Any) {
+        print("= clciked")
     }
     
 }
