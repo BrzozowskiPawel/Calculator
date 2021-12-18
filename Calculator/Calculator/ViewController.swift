@@ -51,8 +51,7 @@ class ViewController: UIViewController {
         
         calculatorManager.lastOperation = Double(sender.tag)
         
-        // Wont allow appending multiple operation buttons into array
-        isValidPress = false
+        
         
         if let reasult = calculatorManager.calaculateValue(operation: "operation") {
             resultLabel.text = reasult
@@ -60,11 +59,25 @@ class ViewController: UIViewController {
         }
         
         print(calculatorManager.calculationArray)
+        
+        // Wont allow appending multiple operation buttons into array
+        isValidPress = false
     }
     
     @IBAction func equalsButtonClicked(_ sender: Any) {
-        print("= clciked")
+        isValidPress = true
+        
+        calculatorManager.lastNumber = calculatorManager.currentNumber
+        
+        if let reasult = calculatorManager.calaculateValue(operation: "equals") {
+            resultLabel.text = reasult
+            print(reasult)
+        }
     }
+    
+    @IBAction func decimalButtonClicked(_ sender: Any) {
+    }
+    
     
 }
 

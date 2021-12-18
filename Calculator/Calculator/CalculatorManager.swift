@@ -28,7 +28,15 @@ class CalculatorManager {
                 return String(calculationArray[0])
             }
         } else if operation == "equals" {
-            
+            if calculationArray.count >= 1 {
+                // Calculate
+                let newValue = calculate(firstNumber: calculationArray[0], secondNumber: lastNumber, operation: Int(lastOperation))
+                calculationArray.removeAll()
+                calculationArray.append(newValue)
+                // Last operation wont be appended becsue user click on the equals button
+//                calculationArray.append(lastOperation)
+                return String(calculationArray[0])
+            }
         }
         
         return nil
