@@ -13,6 +13,7 @@
 		04557DC7276E145900C5471A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04557DC5276E145900C5471A /* Main.storyboard */; };
 		04557DC9276E145900C5471A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04557DC8276E145900C5471A /* Assets.xcassets */; };
 		04557DCC276E145900C5471A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04557DCA276E145900C5471A /* LaunchScreen.storyboard */; };
+		048AA023276E276500F11EDB /* CalculatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AA022276E276500F11EDB /* CalculatorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		04557DC8276E145900C5471A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04557DCB276E145900C5471A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04557DCD276E145900C5471A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		048AA022276E276500F11EDB /* CalculatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				04557DC8276E145900C5471A /* Assets.xcassets */,
 				04557DCA276E145900C5471A /* LaunchScreen.storyboard */,
 				04557DCD276E145900C5471A /* Info.plist */,
+				048AA022276E276500F11EDB /* CalculatorManager.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				04557DC4276E145900C5471A /* ViewController.swift in Sources */,
 				04557DC0276E145900C5471A /* AppDelegate.swift in Sources */,
 				04557DC2276E145900C5471A /* SceneDelegate.swift in Sources */,
+				048AA023276E276500F11EDB /* CalculatorManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
