@@ -52,20 +52,20 @@ class CalculatorManager {
     
     private func calculate( firstNumber: Double, secondNumber: Double, operation: Int) -> Double{
         var total = 0.0
-        
-        switch operation {
-        case 0:
-            total =  firstNumber + secondNumber
-        case 1:
-            total =  firstNumber - secondNumber
-        case 2:
-            total =  firstNumber * secondNumber
-        case 3:
-            total =  firstNumber / secondNumber
-        default:
-            print("ERROR OPERATION INDEX")
+        if let operations = Enumerations.Operations(rawValue: operation) {
+        switch operations {
+            case .add:
+                total =  firstNumber + secondNumber
+            case .subtract:
+                total =  firstNumber - secondNumber
+            case .multiplay:
+                total =  firstNumber * secondNumber
+            case .divide:
+                total =  firstNumber / secondNumber
+            default:
+                print("ERROR OPERATION INDEX")
+            }
         }
-        
         // Defult operation gives few decimal palces, we would like only 3 digits
         return Double(floor(1000*total)/1000)
     }

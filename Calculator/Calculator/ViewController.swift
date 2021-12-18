@@ -14,11 +14,6 @@ class ViewController: UIViewController {
     var calculatorManager = CalculatorManager()
     var isValidPress = false
     var clearDisplay = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 
     @IBAction func numberButtonClicked(_ sender: UIButton) {
         
@@ -28,7 +23,6 @@ class ViewController: UIViewController {
             resultLabel.text = ""
             clearDisplay = false
         }
-        
         
         resultLabel.text! += sender.titleLabel!.text!
         calculatorManager.currentNumber = Double(resultLabel.text!)!
@@ -65,11 +59,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func equalsButtonClicked(_ sender: Any) {
-        
-        // Clear label if there is only 1 item in array.
-        if calculatorManager.calculationArray.count ==  1 {
-            clearClicked(sender)
-        }
         
         isValidPress = true
         
