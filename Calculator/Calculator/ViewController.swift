@@ -28,9 +28,10 @@ class ViewController: UIViewController {
             resultLabel.text = ""
             clearDisplay = false
         }
-        resultLabel.text! += sender.titleLabel!.text!
         
-        calculatorManager.currentNumber = Double(sender.titleLabel!.text!)!
+        
+        resultLabel.text! += sender.titleLabel!.text!
+        calculatorManager.currentNumber = Double(resultLabel.text!)!
         
     }
     
@@ -38,12 +39,27 @@ class ViewController: UIViewController {
         clearDisplay = true
         
         if isValidPress {
-            calculatorManager.calculationArray.append(calculatorManager.currentNumber)
-            calculatorManager.calculationArray.append(Double(sender.tag))
+            
+            if calculatorManager.calculationArray.count == 1 {
+                calculatorManager.calculationArray.append(Double(sender.tag))
+            } else {
+                calculatorManager.calculationArray.append(calculatorManager.currentNumber)
+                calculatorManager.calculationArray.append(Double(sender.tag))
+            }
+            
         }
+        
+        calculatorManager.lastOperation = Double(sender.tag)
         
         // Wont allow appending multiple operation buttons into array
         isValidPress = false
+        
+        if let reasult = calculatorManager.calaculateValue(operation: "operation") {
+            resultLabel.text = reasult
+            print(reasult)
+        }
+        
+        print(calculatorManager.calculationArray)
     }
     
     @IBAction func equalsButtonClicked(_ sender: Any) {
