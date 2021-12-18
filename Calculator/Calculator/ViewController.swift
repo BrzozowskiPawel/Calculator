@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     var calculatorManager = CalculatorManager()
+    var isValidPress = false
+    var clearDisplay = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +22,28 @@ class ViewController: UIViewController {
 
     @IBAction func numberButtonClicked(_ sender: UIButton) {
         
-        resultLabel.text! += sender.currentTitle!
-        calculatorManager.currentNumber = Double(resultLabel.text!)!
+        isValidPress = true
+        
+        if clearDisplay == true {
+            resultLabel.text = ""
+            clearDisplay = false
+        }
+        resultLabel.text! += sender.titleLabel!.text!
+        
+        calculatorManager.currentNumber = Double(sender.titleLabel!.text!)!
         
     }
     
-    @IBAction func operationButtonOrangeClicked(_ sender: Any) {
-        print("Operator clicked")
+    @IBAction func operationButtonOrangeClicked(_ sender: UIButton) {
+        clearDisplay = true
+        
+        if isValidPress {
+            calculatorManager.calculationArray.append(calculatorManager.currentNumber)
+            calculatorManager.calculationArray.append(Double(sender.tag))
+        }
+        
+        // Wont allow appending multiple operation buttons into array
+        isValidPress = false
     }
     
     @IBAction func equalsButtonClicked(_ sender: Any) {
