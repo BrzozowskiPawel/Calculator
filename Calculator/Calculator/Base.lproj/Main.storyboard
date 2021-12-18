@@ -199,11 +199,11 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="6F0-L7-bbg">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="6F0-L7-bbg">
                                         <rect key="frame" x="0.0" y="702" width="414" height="116"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45t-0v-My5">
-                                                <rect key="frame" x="0.0" y="0.0" width="103" height="116"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="206" height="116"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="0">
@@ -211,17 +211,8 @@
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIa-1I-wqQ">
-                                                <rect key="frame" x="104" y="0.0" width="102.5" height="116"/>
-                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDD-VG-dE2">
-                                                <rect key="frame" x="207.5" y="0.0" width="103" height="116"/>
+                                                <rect key="frame" x="207" y="0.0" width="103" height="116"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=".">
@@ -230,7 +221,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmO-94-DX6">
-                                                <rect key="frame" x="311.5" y="0.0" width="102.5" height="116"/>
+                                                <rect key="frame" x="311" y="0.0" width="103" height="116"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="=">
@@ -239,6 +230,10 @@
                                                 </buttonConfiguration>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="FmO-94-DX6" firstAttribute="width" secondItem="45t-0v-My5" secondAttribute="width" multiplier="0.5" id="Hac-pG-pwt"/>
+                                            <constraint firstItem="kDD-VG-dE2" firstAttribute="width" secondItem="45t-0v-My5" secondAttribute="width" multiplier="0.5" id="LyP-lu-s44"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
