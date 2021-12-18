@@ -73,6 +73,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="operationButtonOrangeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p9R-xf-Be8"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -123,6 +126,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="operationButtonOrangeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c0K-YQ-D0c"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -173,6 +179,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="operationButtonOrangeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gF8-eS-Biz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -223,6 +232,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="operationButtonOrangeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vv8-au-jVw"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -258,6 +270,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="equalsButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QaA-la-rd1"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

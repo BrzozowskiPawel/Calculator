@@ -8,6 +8,13 @@
 import Foundation
 
 class CalculatorManager {
+    
+    // Declaration
+    var calculationArray = [Double]()
+    var lastNumber = 0.0
+    var lastOperation = 0.0
+    var currentNumber = 0.0
+    
     func calculate(_ firstNumber: Double, secondNumber: Double, operation: Int) -> Double{
         var total = 0.0
         

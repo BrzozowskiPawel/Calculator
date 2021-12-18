@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var resultLabel: UILabel!
     
+    var calculatorManager = CalculatorManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +19,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func numberButtonClicked(_ sender: UIButton) {
-        var number = sender.titleLabel!.text!
-        resultLabel.text! += number
         
+        resultLabel.text! += sender.currentTitle!
+        calculatorManager.currentNumber = Double(resultLabel.text!)!
+        
+    }
+    
+    @IBAction func operationButtonOrangeClicked(_ sender: Any) {
+    }
+    
+    @IBAction func equalsButtonClicked(_ sender: Any) {
     }
     
 }
