@@ -84,5 +84,18 @@ class ViewController: UIViewController {
         resultLabel.text = ""
     }
     
+    @IBAction func specialButtonPressed(_ sender: UIButton) {
+        // +/- operation
+        if sender.tag == -1 {
+            calculatorManager.currentNumber = calculatorManager.currentNumber * (-1)
+            resultLabel.text = String(calculatorManager.currentNumber)
+        }
+        // % operation
+        else if sender.tag == -2 {
+            calculatorManager.currentNumber = calculatorManager.currentNumber * (0.01)
+            resultLabel.text = String(calculatorManager.currentNumber)
+        }
+    }
+    
 }
 

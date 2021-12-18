@@ -56,7 +56,7 @@
                                                     <action selector="clearClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ExU-uU-Ce2"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G59-w9-5BR">
+                                            <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G59-w9-5BR">
                                                 <rect key="frame" x="104" y="0.0" width="102.5" height="116"/>
                                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                                 <state key="normal" title="Button"/>
@@ -70,8 +70,11 @@
                                                     </attributedString>
                                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="specialButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tbt-fz-5jm"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Js6-QH-CbA">
+                                            <button opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Js6-QH-CbA">
                                                 <rect key="frame" x="207.5" y="0.0" width="103" height="116"/>
                                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                                 <state key="normal" title="Button"/>
@@ -85,6 +88,9 @@
                                                     </attributedString>
                                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="specialButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gA6-HN-Svz"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1g-mX-WPB">
                                                 <rect key="frame" x="311.5" y="0.0" width="102.5" height="116"/>
