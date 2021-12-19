@@ -95,18 +95,64 @@ class ViewController: UIViewController {
             switch i {
             case 0:
                 button.setTitle(textForFirstColumnButtons[horizontalStackRow], for: .normal)
+                
+                if horizontalStackRow == 0 {
+                    // Add clear button
+                    print(button.currentTitle!)
+                    button.addTarget(self, action: #selector(clearClick(sender:)), for: .touchUpInside)
+                }
+                
             case 1:
                 button.setTitle(textForSecondColumnButtons[horizontalStackRow], for: .normal)
+                
+                if horizontalStackRow == 0 {
+                    // Add +/- button
+                    button.addTarget(self, action: #selector(plusMinusClick), for: .touchUpInside)
+                }
+                
             case 2:
                 button.setTitle(textForThirdColumnButtons[horizontalStackRow], for: .normal)
+                
+                if horizontalStackRow == 0 {
+                    // Add % button
+                    button.addTarget(self, action: #selector(procentClick), for: .touchUpInside)
+                }
+                
             case 3:
                 button.setTitle(textForFourthColumnButtons[horizontalStackRow], for: .normal)
                 button.backgroundColor = .orange
+                
+                if horizontalStackRow == 3 {
+                    button.addTarget(self, action: #selector(equalsButtonClick), for: .touchUpInside)
+                } else {
+                    button.addTarget(self, action: #selector(operatorClick), for: .touchUpInside)
+                }
+                
             default:
                 print("")
             }
         }
         
+    }
+    
+    @objc func equalsButtonClick(sender: UIButton) {
+        print(sender.currentTitle!)
+    }
+    
+    @objc func operatorClick(sender: UIButton) {
+        print(sender.currentTitle!)
+    }
+    
+    @objc func clearClick(sender: UIButton) {
+        print(sender.currentTitle!)
+    }
+    
+    @objc func plusMinusClick(sender: UIButton) {
+        print(sender.currentTitle!)
+    }
+    
+    @objc func procentClick(sender: UIButton) {
+        print(sender.currentTitle!)
     }
     
     // Number button is responsible for adding digits to create a number
