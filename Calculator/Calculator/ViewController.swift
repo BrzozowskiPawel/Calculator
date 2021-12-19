@@ -21,6 +21,10 @@ class ViewController: UIViewController {
     var verticalStack = UIStackView()
     var resultLabel = UILabel()
     
+    var textForFirstColumnButtons = ["AC","7", "4",  "1", "0"]
+    var textForSecondColumnButtons = ["⁺∕₋", "8", "5", "2", ""]
+    var textForThirdColumnButtons = ["%", "9", "6", "3", "." ]
+    var textForFourthColumnButtons = ["÷", "x", "-", "+", "="]
     override func viewDidLoad() {
         view.backgroundColor = .black
         setUpMainStackView()
@@ -74,12 +78,28 @@ class ViewController: UIViewController {
     }
     
     func addButtonsToStackView(view: UIStackView, forRowAt: Int) {
+        let horizontalStackRow = forRowAt-2
+        
         for i in 0...3 {
             let button = UIButton(type: .system) // Adding system button
             button.setTitleColor(.white, for: .normal)
             button.backgroundColor = .orange
             view.addArrangedSubview(button)
+            
+            switch i {
+            case 0:
+                button.setTitle(textForFirstColumnButtons[horizontalStackRow], for: .normal)
+            case 1:
+                button.setTitle(textForSecondColumnButtons[horizontalStackRow], for: .normal)
+            case 2:
+                button.setTitle(textForThirdColumnButtons[horizontalStackRow], for: .normal)
+            case 3:
+                button.setTitle(textForFourthColumnButtons[horizontalStackRow], for: .normal)
+            default:
+                print("")
+            }
         }
+        
     }
     
     // Number button is responsible for adding digits to create a number
