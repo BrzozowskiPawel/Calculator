@@ -16,7 +16,30 @@ class ViewController: UIViewController {
     // Make sure that this is comapatible for ex. cannot perform normal operation when there is no second number.
     var isValidPress = false
     var clearDisplay = false
-
+    
+    
+    var verticalStack = UIStackView()
+    
+    override func viewDidLoad() {
+        view.backgroundColor = .red
+        
+    }
+    
+    func setUpStackView() {
+        view.addSubview(verticalStack)
+        
+        // Setup main StackView
+        verticalStack.axis = .vertical
+        verticalStack.distribution = .fillEqually
+        verticalStack.spacing = 1
+        
+        verticalStack.translatesAutoresizingMaskIntoConstraints = false // This is nessesary to constraints to work properly
+        verticalStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true // Added top constraint
+        verticalStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true // Added bottom constraint
+        verticalStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true // Added leading(left) constraint
+        verticalStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true // Added trailing(right) constraint
+    }
+    
     // Number button is responsible for adding digits to create a number
     @IBAction func numberButtonClicked(_ sender: UIButton) {
         isValidPress = true
