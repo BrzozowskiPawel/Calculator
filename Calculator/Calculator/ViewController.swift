@@ -48,7 +48,7 @@ class ViewController: UIViewController {
             horizontalStackView.spacing = 1
             horizontalStackView.axis = .horizontal
             horizontalStackView.distribution = .fillEqually
-            verticalStack.addArrangedSubview(horizontalStackView)
+            
             
             if i == 1{
                 // Add display label
@@ -58,8 +58,10 @@ class ViewController: UIViewController {
                 
             } else if i >= 2 {
                 // Add buttons
-                
+                addButtonsToStackView(view: horizontalStackView, forRowAt: i)
             }
+            
+            verticalStack.addArrangedSubview(horizontalStackView)
         }
     }
     
@@ -69,6 +71,15 @@ class ViewController: UIViewController {
         resultLabel.textColor = .white
         resultLabel.text = "DUMMY TEXT"
         view.addArrangedSubview(resultLabel)
+    }
+    
+    func addButtonsToStackView(view: UIStackView, forRowAt: Int) {
+        for i in 0...3 {
+            let button = UIButton(type: .system) // Adding system button
+            button.setTitleColor(.white, for: .normal)
+            button.backgroundColor = .orange
+            view.addArrangedSubview(button)
+        }
     }
     
     // Number button is responsible for adding digits to create a number
