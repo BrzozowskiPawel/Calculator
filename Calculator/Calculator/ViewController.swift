@@ -21,6 +21,10 @@ class ViewController: UIViewController {
     var verticalStack = UIStackView()
     var resultLabel = UILabel()
     
+    var zeroButton = UIButton()
+    var periodButton = UIButton()
+    var equalsButton = UIButton()
+    
     var textForFirstColumnButtons = ["AC","7", "4",  "1", "0"]
     var textForSecondColumnButtons = ["⁺∕₋", "8", "5", "2", ""]
     var textForThirdColumnButtons = ["%", "9", "6", "3", "." ]
@@ -51,7 +55,6 @@ class ViewController: UIViewController {
             let horizontalStackView = UIStackView()
             horizontalStackView.spacing = 1
             horizontalStackView.axis = .horizontal
-            horizontalStackView.distribution = .fillEqually
             
             
             if i == 1{
@@ -65,8 +68,30 @@ class ViewController: UIViewController {
                 addButtonsToStackView(view: horizontalStackView, forRowAt: i)
             }
             
-            verticalStack.addArrangedSubview(horizontalStackView)
+            if i < 6 {
+                verticalStack.addArrangedSubview(horizontalStackView)
+                horizontalStackView.distribution = .fillEqually
+            } else {
+                resizeZeroButton(view: horizontalStackView)
+            }
+            
         }
+    }
+    
+    func resizeZeroButton(view: UIStackView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addArrangedSubview(zeroButton)
+        view.addArrangedSubview(periodButton)
+        view.addArrangedSubview(equalsButton)
+        
+        zeroButton.widthAnchor.constraint(equalTo: self.periodButton.widthAnchor, multiplier: 2.0).isActive = true
+        zeroButton.widthAnchor.constraint(equalTo: self.equalsButton.widthAnchor, multiplier: 2.0).isActive = true
+
+        
+        verticalStack.addArrangedSubview(view)
+        verticalStack.distribution = .fillEqually
+
     }
     
     func addDisplayLabel(view: UIStackView) {
@@ -90,8 +115,6 @@ class ViewController: UIViewController {
                 button.backgroundColor = .systemGray2
             }
             
-            view.addArrangedSubview(button)
-            
             switch i {
             case 0:
                 button.setTitle(textForFirstColumnButtons[horizontalStackRow], for: .normal)
@@ -99,9 +122,18 @@ class ViewController: UIViewController {
                 if horizontalStackRow == 0 {
                     // Add clear button
                     button.addTarget(self, action: #selector(clearClick), for: .touchUpInside)
-                } else {
+                    view.addArrangedSubview(button)
+                } else if horizontalStackRow == 4{
+                    // 0 button
                     button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
+                    zeroButton = button
                 }
+                else {
+                    print("button: \(button.currentTitle!)")
+                    button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
+                    view.addArrangedSubview(button)
+                }
+                
                 
             case 1:
                 button.setTitle(textForSecondColumnButtons[horizontalStackRow], for: .normal)
@@ -109,10 +141,11 @@ class ViewController: UIViewController {
                 if horizontalStackRow == 0 {
                     // Add +/- button
                     button.addTarget(self, action: #selector(plusMinusClick), for: .touchUpInside)
+                    view.addArrangedSubview(button)
                 } else if horizontalStackRow != 4{
                     // There is no button, 0 button should be wider
-                    
                     button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
+                    view.addArrangedSubview(button)
                 }
                 
             case 2:
@@ -121,13 +154,16 @@ class ViewController: UIViewController {
                 if horizontalStackRow == 0 {
                     // Add % button
                     button.addTarget(self, action: #selector(procentClick), for: .touchUpInside)
+                    view.addArrangedSubview(button)
                 }
                 else if horizontalStackRow == 4 {
                     // . button
                     button.addTarget(self, action: #selector(periodButtonClick), for: .touchUpInside)
+                    periodButton = button
                 }
                 else {
                     button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
+                    view.addArrangedSubview(button)
                 }
                 
             case 3:
@@ -136,18 +172,20 @@ class ViewController: UIViewController {
                 
                 if horizontalStackRow == 4 {
                     button.addTarget(self, action: #selector(equalsButtonClick), for: .touchUpInside)
+                    equalsButton = button
                 } else {
                     button.addTarget(self, action: #selector(operatorClick), for: .touchUpInside)
                     button.tag = 3 - horizontalStackRow // Coz button are counted from bottom
-                    print("Button: \(button.currentTitle!), tag: \(button.tag)")
+                    //print("Button: \(button.currentTitle!), tag: \(button.tag)")
+                    view.addArrangedSubview(button)
                 }
-                
             default:
                 print("")
             }
         }
         
     }
+    
     
     // Get result of operation or perform last operation once more
     @objc func equalsButtonClick(sender: UIButton) {
