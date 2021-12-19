@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         // Setup main StackView
         verticalStack.axis = .vertical
         verticalStack.distribution = .fillEqually
-        verticalStack.spacing = 6
+        verticalStack.spacing = 5
         
         verticalStack.translatesAutoresizingMaskIntoConstraints = false // This is nessesary to constraints to work properly
         verticalStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true // Added top constraint
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
     func setUpChildrensOFMainStackView() {
         for i in 0...6 {
             let horizontalStackView = UIStackView()
-            horizontalStackView.spacing = 12
+            horizontalStackView.spacing = 10
             horizontalStackView.axis = .horizontal
             
             
