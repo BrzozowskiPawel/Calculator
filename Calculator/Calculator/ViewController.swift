@@ -45,10 +45,12 @@ class ViewController: UIViewController {
             if button.currentTitle! != "0" {
                 button.bounds.size.height = button.bounds.size.width
                 button.layer.cornerRadius = 0.5 * button.bounds.size.width
-                button.clipsToBounds = true
+                
             } else {
-                button.layer.cornerRadius = 0.25 * button.bounds.size.width
                 button.clipsToBounds = true
+                button.bounds.size.height = periodButton.bounds.size.height - 12
+                print("Std h; \(button.bounds.size.height), 0 h: \(button.bounds.size.height)")
+                button.layer.cornerRadius = 0.25 * button.bounds.size.width
             }
         }
     }
@@ -112,7 +114,7 @@ class ViewController: UIViewController {
     }
     
     func addDisplayLabel(view: UIStackView) {
-        resultLabel.font = resultLabel.font.withSize(50)
+        resultLabel.font = resultLabel.font.withSize(56)
         resultLabel.textAlignment = .right
         resultLabel.textColor = .white
         resultLabel.text = ""
@@ -124,7 +126,7 @@ class ViewController: UIViewController {
         
         for i in 0...3 {
             let button = UIButton(type: .system) // Adding system button
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .medium)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 35, weight: .medium)
             
             button.setTitleColor(.white, for: .normal)
             
@@ -191,6 +193,7 @@ class ViewController: UIViewController {
             case 3:
                 button.setTitle(textForFourthColumnButtons[horizontalStackRow], for: .normal)
                 button.backgroundColor = .orange
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 50, weight: .regular)
                 
                 if horizontalStackRow == 4 {
                     button.addTarget(self, action: #selector(equalsButtonClick), for: .touchUpInside)
