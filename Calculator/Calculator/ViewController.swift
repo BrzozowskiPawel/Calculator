@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         resultLabel.font = resultLabel.font.withSize(32)
         resultLabel.textAlignment = .right
         resultLabel.textColor = .white
-        resultLabel.text = "DUMMY TEXT"
+        resultLabel.text = ""
         view.addArrangedSubview(resultLabel)
     }
     
@@ -98,8 +98,9 @@ class ViewController: UIViewController {
                 
                 if horizontalStackRow == 0 {
                     // Add clear button
-                    print(button.currentTitle!)
-                    button.addTarget(self, action: #selector(clearClick(sender:)), for: .touchUpInside)
+                    button.addTarget(self, action: #selector(clearClick), for: .touchUpInside)
+                } else {
+                    button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
                 }
                 
             case 1:
@@ -108,6 +109,10 @@ class ViewController: UIViewController {
                 if horizontalStackRow == 0 {
                     // Add +/- button
                     button.addTarget(self, action: #selector(plusMinusClick), for: .touchUpInside)
+                } else if horizontalStackRow != 4{
+                    // There is no button, 0 button should be wider
+                    
+                    button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
                 }
                 
             case 2:
@@ -117,15 +122,24 @@ class ViewController: UIViewController {
                     // Add % button
                     button.addTarget(self, action: #selector(procentClick), for: .touchUpInside)
                 }
+                else if horizontalStackRow == 4 {
+                    // . button
+                    button.addTarget(self, action: #selector(periodButtonClick), for: .touchUpInside)
+                }
+                else {
+                    button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
+                }
                 
             case 3:
                 button.setTitle(textForFourthColumnButtons[horizontalStackRow], for: .normal)
                 button.backgroundColor = .orange
                 
-                if horizontalStackRow == 3 {
+                if horizontalStackRow == 4 {
                     button.addTarget(self, action: #selector(equalsButtonClick), for: .touchUpInside)
                 } else {
                     button.addTarget(self, action: #selector(operatorClick), for: .touchUpInside)
+                    button.tag = 3 - horizontalStackRow // Coz button are counted from bottom
+                    print("Button: \(button.currentTitle!), tag: \(button.tag)")
                 }
                 
             default:
@@ -135,46 +149,28 @@ class ViewController: UIViewController {
         
     }
     
+    // Get result of operation or perform last operation once more
     @objc func equalsButtonClick(sender: UIButton) {
-        print(sender.currentTitle!)
-    }
-    
-    @objc func operatorClick(sender: UIButton) {
-        print(sender.currentTitle!)
-    }
-    
-    @objc func clearClick(sender: UIButton) {
-        print(sender.currentTitle!)
-    }
-    
-    @objc func plusMinusClick(sender: UIButton) {
-        print(sender.currentTitle!)
-    }
-    
-    @objc func procentClick(sender: UIButton) {
-        print(sender.currentTitle!)
-    }
-    
-    // Number button is responsible for adding digits to create a number
-    @IBAction func numberButtonClicked(_ sender: UIButton) {
         isValidPress = true
-        if clearDisplay == true {
-            resultLabel.text = ""
-            clearDisplay = false
+        calculatorManager.lastNumber = calculatorManager.currentNumber
+        if let result = calculatorManager.calaculateValue(operation: "equals") {
+            resultLabel.text = getResultAsString(result: result)
+            print(result)
         }
-        resultLabel.text! += sender.titleLabel!.text!
-        calculatorManager.currentNumber = Double(resultLabel.text!)!
-        
     }
     
     // Special button like =/-/:/x and =
     // After presing it operation will be done (ofc if it's possible)
-    @IBAction func operationButtonOrangeClicked(_ sender: UIButton) {
+    @objc func operatorClick(sender: UIButton) {
+        
         clearDisplay = true
         if isValidPress {
+            print("VALID: tag: \(sender.tag), button: \(sender.currentTitle!)")
+            
             if calculatorManager.calculationArray.count == 1 {
                 calculatorManager.calculationArray.append(Double(sender.tag))
-            } else {
+            }
+            else {
                 calculatorManager.calculationArray.append(calculatorManager.currentNumber)
                 calculatorManager.calculationArray.append(Double(sender.tag))
             }
@@ -186,6 +182,42 @@ class ViewController: UIViewController {
         }
         // Wont allow appending multiple operation buttons into array
         isValidPress = false
+    }
+    
+    // Clear the data and displayed label
+    @objc func clearClick(sender: UIButton) {
+        // Reseting declared values
+        clearDisplay = false
+        isValidPress = false
+        calculatorManager.clear()
+        resultLabel.text = ""
+    }
+    
+    @objc func plusMinusClick(sender: UIButton) {
+        calculatorManager.currentNumber = calculatorManager.currentNumber * (-1)
+        resultLabel.text = String(calculatorManager.currentNumber)
+    }
+    
+    @objc func procentClick(sender: UIButton) {
+        calculatorManager.currentNumber = calculatorManager.currentNumber * (0.01)
+        resultLabel.text = String(calculatorManager.currentNumber)
+    }
+    
+    // Number button is responsible for adding digits to create a number
+    @objc func numberButtonClick(sender: UIButton) {
+        isValidPress = true
+        if clearDisplay == true {
+            resultLabel.text = ""
+            clearDisplay = false
+        }
+        resultLabel.text! += sender.titleLabel!.text!
+        calculatorManager.currentNumber = Double(resultLabel.text!)!
+    }
+    
+    @objc func periodButtonClick(sender: UIButton) {
+        if !((resultLabel.text)?.contains("."))! {
+            resultLabel.text! += "."
+        }
     }
     
     // Function added to fix error when adding 2 whole numbers resulted in Double result (with 0 in decimal place).
@@ -205,44 +237,6 @@ class ViewController: UIViewController {
         }
     }
     
-    // Get result of operation or perform last operation once more
-    @IBAction func equalsButtonClicked(_ sender: Any) {
-        isValidPress = true
-        calculatorManager.lastNumber = calculatorManager.currentNumber
-        if let result = calculatorManager.calaculateValue(operation: "equals") {
-            resultLabel.text = getResultAsString(result: result)
-            print(result)
-        }
-    }
-    
-    // Add decimal point to the number
-    @IBAction func decimalButtonClicked(_ sender: Any) {
-        if !((resultLabel.text)?.contains("."))! {
-            resultLabel.text! += "."
-        }
-    }
-    
-    // Clear the data and displayed label
-    @IBAction func clearClicked(_ sender: Any) {
-        // Reseting declared values
-        clearDisplay = false
-        isValidPress = false
-        calculatorManager.clear()
-        resultLabel.text = ""
-    }
-    
-    @IBAction func specialButtonPressed(_ sender: UIButton) {
-        // +/- operation
-        if sender.tag == -1 {
-            calculatorManager.currentNumber = calculatorManager.currentNumber * (-1)
-            resultLabel.text = String(calculatorManager.currentNumber)
-        }
-        // % operation
-        else if sender.tag == -2 {
-            calculatorManager.currentNumber = calculatorManager.currentNumber * (0.01)
-            resultLabel.text = String(calculatorManager.currentNumber)
-        }
-    }
     
 }
 
