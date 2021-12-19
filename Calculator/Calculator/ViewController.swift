@@ -145,16 +145,19 @@ class ViewController: UIViewController {
                     // Add clear button
                     button.addTarget(self, action: #selector(clearClick), for: .touchUpInside)
                     button.setTitleColor(.black, for: .normal)
+                    button.backgroundColor = UIColor(hexString: "A5A5A5")
                     
                     view.addArrangedSubview(button)
                 } else if horizontalStackRow == 4{
                     // 0 button
                     button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
+                    button.backgroundColor = UIColor(hexString: "343434")
                     zeroButton = button
                 }
                 else {
                     print("button: \(button.currentTitle!)")
                     button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
+                    button.backgroundColor = UIColor(hexString: "343434")
                     view.addArrangedSubview(button)
                 }
                 
@@ -165,10 +168,15 @@ class ViewController: UIViewController {
                 if horizontalStackRow == 0 {
                     // Add +/- button
                     button.addTarget(self, action: #selector(plusMinusClick), for: .touchUpInside)
+                    button.setTitleColor(.black, for: .normal)
+                    button.backgroundColor = UIColor(hexString: "A5A5A5")
+                    
                     view.addArrangedSubview(button)
+                    
                 } else if horizontalStackRow != 4{
                     // There is no button, 0 button should be wider
                     button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
+                    button.backgroundColor = UIColor(hexString: "343434")
                     view.addArrangedSubview(button)
                 }
                 
@@ -178,22 +186,26 @@ class ViewController: UIViewController {
                 if horizontalStackRow == 0 {
                     // Add % button
                     button.addTarget(self, action: #selector(procentClick), for: .touchUpInside)
+                    button.setTitleColor(.black, for: .normal)
+                    button.backgroundColor = UIColor(hexString: "A5A5A5")
                     view.addArrangedSubview(button)
                 }
                 else if horizontalStackRow == 4 {
                     // . button
                     button.addTarget(self, action: #selector(periodButtonClick), for: .touchUpInside)
+                    button.backgroundColor = UIColor(hexString: "343434")
                     periodButton = button
                 }
                 else {
                     button.addTarget(self, action: #selector(numberButtonClick), for: .touchUpInside)
+                    button.backgroundColor = UIColor(hexString: "343434")
                     view.addArrangedSubview(button)
                 }
                 
             case 3:
                 button.setTitle(textForFourthColumnButtons[horizontalStackRow], for: .normal)
-                button.backgroundColor = .orange
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 50, weight: .regular)
+                button.backgroundColor = UIColor(hexString: "FEA00A")
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 46, weight: .regular)
                 
                 if horizontalStackRow == 4 {
                     button.addTarget(self, action: #selector(equalsButtonClick), for: .touchUpInside)

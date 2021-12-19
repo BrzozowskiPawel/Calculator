@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04326FC2276FD1F7007EEBE6 /* UIColorExtensionHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04326FC1276FD1F7007EEBE6 /* UIColorExtensionHex.swift */; };
 		04557DC0276E145900C5471A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04557DBF276E145900C5471A /* AppDelegate.swift */; };
 		04557DC2276E145900C5471A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04557DC1276E145900C5471A /* SceneDelegate.swift */; };
 		04557DC4276E145900C5471A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04557DC3276E145900C5471A /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04326FC1276FD1F7007EEBE6 /* UIColorExtensionHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensionHex.swift; sourceTree = "<group>"; };
 		04557DBC276E145900C5471A /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04557DBF276E145900C5471A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04557DC1276E145900C5471A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				04557DCD276E145900C5471A /* Info.plist */,
 				048AA022276E276500F11EDB /* CalculatorManager.swift */,
 				0459A94E276EA217000217AC /* Enumaration.swift */,
+				04326FC1276FD1F7007EEBE6 /* UIColorExtensionHex.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04557DC4276E145900C5471A /* ViewController.swift in Sources */,
+				04326FC2276FD1F7007EEBE6 /* UIColorExtensionHex.swift in Sources */,
 				04557DC0276E145900C5471A /* AppDelegate.swift in Sources */,
 				04557DC2276E145900C5471A /* SceneDelegate.swift in Sources */,
 				0459A94F276EA217000217AC /* Enumaration.swift in Sources */,
