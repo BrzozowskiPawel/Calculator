@@ -11,55 +11,50 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var resultLabel: UILabel!
     
+    // Reference to calculatorManager
     var calculatorManager = CalculatorManager()
+    // Make sure that this is comapatible for ex. cannot perform normal operation when there is no second number.
     var isValidPress = false
     var clearDisplay = false
 
+    // Number button is responsible for adding digits to create a number
     @IBAction func numberButtonClicked(_ sender: UIButton) {
-        
         isValidPress = true
-        
         if clearDisplay == true {
             resultLabel.text = ""
             clearDisplay = false
         }
-        
         resultLabel.text! += sender.titleLabel!.text!
         calculatorManager.currentNumber = Double(resultLabel.text!)!
         
     }
     
+    // Special button like =/-/:/x and =
+    // After presing it operation will be done (ofc if it's possible)
     @IBAction func operationButtonOrangeClicked(_ sender: UIButton) {
         clearDisplay = true
-        
         if isValidPress {
-            
             if calculatorManager.calculationArray.count == 1 {
                 calculatorManager.calculationArray.append(Double(sender.tag))
             } else {
                 calculatorManager.calculationArray.append(calculatorManager.currentNumber)
                 calculatorManager.calculationArray.append(Double(sender.tag))
             }
-            
         }
-        
         calculatorManager.lastOperation = Double(sender.tag)
-        
-        
-        
         if let result = calculatorManager.calaculateValue(operation: "operation") {
             resultLabel.text = getResultAsString(result: result)
             print(result)
         }
-        
-        print(calculatorManager.calculationArray)
-        
         // Wont allow appending multiple operation buttons into array
         isValidPress = false
     }
     
+    // Function added to fix error when adding 2 whole numbers resulted in Double result (with 0 in decimal place).
+    // This is only to look better
     func getResultAsString(result: Double?) -> String{
         if let result = result {
+            // If decimal number is 0 than just cast it into Int
             if result.rounded(.up) == result.rounded(.down){
                 //number is integer
                 return String(Int(result))
@@ -72,24 +67,24 @@ class ViewController: UIViewController {
         }
     }
     
+    // Get result of operation or perform last operation once more
     @IBAction func equalsButtonClicked(_ sender: Any) {
-        
         isValidPress = true
-        
         calculatorManager.lastNumber = calculatorManager.currentNumber
-        
         if let result = calculatorManager.calaculateValue(operation: "equals") {
             resultLabel.text = getResultAsString(result: result)
             print(result)
         }
     }
     
+    // Add decimal point to the number
     @IBAction func decimalButtonClicked(_ sender: Any) {
         if !((resultLabel.text)?.contains("."))! {
             resultLabel.text! += "."
         }
     }
     
+    // Clear the data and displayed label
     @IBAction func clearClicked(_ sender: Any) {
         // Reseting declared values
         clearDisplay = false
