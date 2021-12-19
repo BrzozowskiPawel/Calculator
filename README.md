@@ -9,9 +9,9 @@ FUN FACT - you can download it and install it on your iPad, in that case, you wi
 
 ## Description
 
-This app is almost 1:1 copy of orginal iOS calculator app. </br>
-I have tried to recrete UI and all functionality (only in portreit mode). </br>
-All operation that can be done on orginal app user can also do here. </br></br>
+This app is almost a 1:1 copy of the original iOS calculator app. </br>
+I have tried to recreate UI and all functionality (only in portrait mode). </br>
+All operations that can be done on original app user can also do here. </br></br>
 
 UI have been desinged fully using code files. </br></br></br>
 
