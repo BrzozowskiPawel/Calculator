@@ -24,15 +24,30 @@ class ViewController: UIViewController {
     var zeroButton = UIButton()
     var periodButton = UIButton()
     var equalsButton = UIButton()
+    var listOfButtonsToResize = [UIButton]()
     
     var textForFirstColumnButtons = ["AC","7", "4",  "1", "0"]
     var textForSecondColumnButtons = ["⁺∕₋", "8", "5", "2", ""]
     var textForThirdColumnButtons = ["%", "9", "6", "3", "." ]
     var textForFourthColumnButtons = ["÷", "x", "-", "+", "="]
+    
     override func viewDidLoad() {
         view.backgroundColor = .black
         setUpMainStackView()
         setUpChildrensOFMainStackView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        for button in listOfButtonsToResize {
+            if button.currentTitle! != "0" {
+                button.bounds.size.height = button.bounds.size.width
+                print("Button width: \(button.bounds.size.width), height: \(button.bounds.size.height)")
+                button.layer.cornerRadius = 0.5 * button.bounds.size.width
+                button.clipsToBounds = true
+            }
+        }
     }
     
     func setUpMainStackView() {
@@ -41,7 +56,7 @@ class ViewController: UIViewController {
         // Setup main StackView
         verticalStack.axis = .vertical
         verticalStack.distribution = .fillEqually
-        verticalStack.spacing = 1
+        verticalStack.spacing = 6
         
         verticalStack.translatesAutoresizingMaskIntoConstraints = false // This is nessesary to constraints to work properly
         verticalStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true // Added top constraint
@@ -53,7 +68,7 @@ class ViewController: UIViewController {
     func setUpChildrensOFMainStackView() {
         for i in 0...6 {
             let horizontalStackView = UIStackView()
-            horizontalStackView.spacing = 1
+            horizontalStackView.spacing = 12
             horizontalStackView.axis = .horizontal
             
             
@@ -87,7 +102,6 @@ class ViewController: UIViewController {
         
         zeroButton.widthAnchor.constraint(equalTo: self.periodButton.widthAnchor, multiplier: 2.0).isActive = true
         zeroButton.widthAnchor.constraint(equalTo: self.equalsButton.widthAnchor, multiplier: 2.0).isActive = true
-
         
         verticalStack.addArrangedSubview(view)
         verticalStack.distribution = .fillEqually
@@ -95,7 +109,7 @@ class ViewController: UIViewController {
     }
     
     func addDisplayLabel(view: UIStackView) {
-        resultLabel.font = resultLabel.font.withSize(32)
+        resultLabel.font = resultLabel.font.withSize(50)
         resultLabel.textAlignment = .right
         resultLabel.textColor = .white
         resultLabel.text = ""
@@ -114,6 +128,9 @@ class ViewController: UIViewController {
             } else {
                 button.backgroundColor = .systemGray2
             }
+            
+            button.layer.cornerRadius = 0.5 * button.bounds.size.width
+            print(button.bounds.size.width)
             
             switch i {
             case 0:
@@ -182,6 +199,8 @@ class ViewController: UIViewController {
             default:
                 print("")
             }
+        
+            listOfButtonsToResize.append(button)
         }
         
     }
