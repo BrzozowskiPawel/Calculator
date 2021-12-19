@@ -83,7 +83,13 @@ class ViewController: UIViewController {
         for i in 0...3 {
             let button = UIButton(type: .system) // Adding system button
             button.setTitleColor(.white, for: .normal)
-            button.backgroundColor = .orange
+            
+            if forRowAt == 2 {
+                button.backgroundColor = .systemGray
+            } else {
+                button.backgroundColor = .systemGray2
+            }
+            
             view.addArrangedSubview(button)
             
             switch i {
@@ -95,6 +101,7 @@ class ViewController: UIViewController {
                 button.setTitle(textForThirdColumnButtons[horizontalStackRow], for: .normal)
             case 3:
                 button.setTitle(textForFourthColumnButtons[horizontalStackRow], for: .normal)
+                button.backgroundColor = .orange
             default:
                 print("")
             }
