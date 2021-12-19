@@ -418,9 +418,6 @@
                             <constraint firstItem="MKf-un-DRT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zjh-oX-UlG"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="resultLabel" destination="A1k-8w-KLy" id="mY9-bV-87X"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

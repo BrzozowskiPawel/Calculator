@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var resultLabel: UILabel!
+//    @IBOutlet weak var resultLabel: UILabel!
     
     // Reference to calculatorManager
     var calculatorManager = CalculatorManager()
@@ -19,13 +19,15 @@ class ViewController: UIViewController {
     
     
     var verticalStack = UIStackView()
+    var resultLabel = UILabel()
     
     override func viewDidLoad() {
-        view.backgroundColor = .red
-        
+        view.backgroundColor = .black
+        setUpMainStackView()
+        setUpChildrensOFMainStackView()
     }
     
-    func setUpStackView() {
+    func setUpMainStackView() {
         view.addSubview(verticalStack)
         
         // Setup main StackView
@@ -38,6 +40,35 @@ class ViewController: UIViewController {
         verticalStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true // Added bottom constraint
         verticalStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true // Added leading(left) constraint
         verticalStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true // Added trailing(right) constraint
+    }
+    
+    func setUpChildrensOFMainStackView() {
+        for i in 0...6 {
+            let horizontalStackView = UIStackView()
+            horizontalStackView.spacing = 1
+            horizontalStackView.axis = .horizontal
+            horizontalStackView.distribution = .fillEqually
+            verticalStack.addArrangedSubview(horizontalStackView)
+            
+            if i == 1{
+                // Add display label
+                horizontalStackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+                horizontalStackView.isLayoutMarginsRelativeArrangement =  true
+                addDisplayLabel(view: horizontalStackView)
+                
+            } else if i >= 2 {
+                // Add buttons
+                
+            }
+        }
+    }
+    
+    func addDisplayLabel(view: UIStackView) {
+        resultLabel.font = resultLabel.font.withSize(32)
+        resultLabel.textAlignment = .right
+        resultLabel.textColor = .white
+        resultLabel.text = "DUMMY TEXT"
+        view.addArrangedSubview(resultLabel)
     }
     
     // Number button is responsible for adding digits to create a number
