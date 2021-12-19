@@ -37,14 +37,17 @@ class ViewController: UIViewController {
         setUpChildrensOFMainStackView()
     }
     
+    // Resize buttons
     override func viewDidAppear(_ animated: Bool) {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         for button in listOfButtonsToResize {
             if button.currentTitle! != "0" {
                 button.bounds.size.height = button.bounds.size.width
-                print("Button width: \(button.bounds.size.width), height: \(button.bounds.size.height)")
                 button.layer.cornerRadius = 0.5 * button.bounds.size.width
+                button.clipsToBounds = true
+            } else {
+                button.layer.cornerRadius = 0.25 * button.bounds.size.width
                 button.clipsToBounds = true
             }
         }
@@ -121,6 +124,8 @@ class ViewController: UIViewController {
         
         for i in 0...3 {
             let button = UIButton(type: .system) // Adding system button
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .medium)
+            
             button.setTitleColor(.white, for: .normal)
             
             if forRowAt == 2 {
@@ -129,8 +134,6 @@ class ViewController: UIViewController {
                 button.backgroundColor = .systemGray2
             }
             
-            button.layer.cornerRadius = 0.5 * button.bounds.size.width
-            print(button.bounds.size.width)
             
             switch i {
             case 0:
@@ -139,6 +142,8 @@ class ViewController: UIViewController {
                 if horizontalStackRow == 0 {
                     // Add clear button
                     button.addTarget(self, action: #selector(clearClick), for: .touchUpInside)
+                    button.setTitleColor(.black, for: .normal)
+                    
                     view.addArrangedSubview(button)
                 } else if horizontalStackRow == 4{
                     // 0 button
